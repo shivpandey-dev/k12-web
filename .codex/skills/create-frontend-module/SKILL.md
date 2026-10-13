@@ -27,7 +27,8 @@ description: Create a cohesive feature module in the k12-web Next.js frontend th
    `error.tsx` where the segment fetches data. Register navigation entries with the roles allowed
    to see them.
 6. Export from `index.ts` only what other code needs (components used by routes, hooks or types
-   another module consumes). Never deep-import another module's internals.
+   another module consumes). Never deep-import another module's internals. Test helpers other
+   modules' tests need (e.g. seeding state) go in `testing.ts`, which only test files may import.
 7. Follow the `api-integration`, `ui-component`, and `form` skills for the respective parts.
 8. Add tests per `frontend-testing`: hook/API behavior with MSW, components for key states, and an
    E2E flow for the module's critical path.
