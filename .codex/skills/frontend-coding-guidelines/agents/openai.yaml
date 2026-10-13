@@ -1,0 +1,4 @@
+interface:
+  display_name: 'Frontend Coding Guidelines'
+  short_description: 'Apply k12-web TypeScript, React, and Next.js standards'
+  default_prompt: 'Use $frontend-coding-guidelines to apply the k12-web coding guidelines to this change.'

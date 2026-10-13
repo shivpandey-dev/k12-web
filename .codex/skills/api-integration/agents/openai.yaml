@@ -1,0 +1,4 @@
+interface:
+  display_name: 'API Integration'
+  short_description: 'Call k12-api with typed clients and query hooks'
+  default_prompt: 'Use $api-integration to integrate this feature with k12-api.'

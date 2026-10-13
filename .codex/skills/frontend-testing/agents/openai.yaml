@@ -1,0 +1,4 @@
+interface:
+  display_name: 'Frontend Testing'
+  short_description: 'Write Vitest, RTL, MSW, and Playwright tests'
+  default_prompt: 'Use $frontend-testing to write tests for this frontend change.'

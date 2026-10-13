@@ -1,0 +1,4 @@
+interface:
+  display_name: 'Review Frontend Change'
+  short_description: 'Review frontend changes before completion'
+  default_prompt: 'Use $review-frontend-change to review this frontend change before handoff.'

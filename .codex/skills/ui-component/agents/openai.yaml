@@ -1,0 +1,4 @@
+interface:
+  display_name: 'UI Component'
+  short_description: 'Build accessible MUI pages and components'
+  default_prompt: 'Use $ui-component to build an accessible MUI component or page.'

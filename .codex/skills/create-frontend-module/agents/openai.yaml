@@ -1,0 +1,4 @@
+interface:
+  display_name: 'Create Frontend Module'
+  short_description: 'Add a feature module mirroring a k12-api module'
+  default_prompt: 'Use $create-frontend-module to add a cohesive frontend feature module.'
