@@ -22,8 +22,10 @@ decision. When a choice is not covered there, ask the user instead of picking si
 
 - Setup: `nvm use` (Node 24), `npm install`, `cp .env.example .env.local`.
 - Develop/build: `npm run dev` (port 3001), `npm run build`, `npm run start`.
-- Quality: `npm run lint`, `npm run typecheck`, `npm run format:check`; `npm test`,
-  `npm run test:e2e`, and `npm run api:types` once those scripts exist.
+- Quality: `npm run lint`, `npm run typecheck`, `npm run format:check`, `npm test`
+  (`npm run test:e2e` once Playwright is added).
+- API types: `npm run api:types` regenerates `src/lib/api/schema.d.ts` from the running k12-api;
+  run it whenever the backend contract changes and commit the result.
 
 ## Non-negotiable rules
 

@@ -44,9 +44,10 @@ Browser ──/api/v1/*──▶ Next.js (proxy) ──▶ k12-api
 
 - Central portal (e.g. `app.kidzdiary.com`, `localhost:3001`): `POST /auth/login` with School code +
   login ID.
-- School hostname (e.g. `dps.kidzdiary.com`, `dps.localhost:3001` in dev): branding from
-  `GET /public/tenant`, login with `POST /auth/tenant-login`. The API resolves the School from the
-  Host header, so the proxy must forward the original Host (to verify during implementation).
+- School hostname (e.g. `dps.kidzdiary.com`): branding from `GET /public/tenant`, login with
+  `POST /auth/tenant-login`. The API resolves the School from the request host. The Next.js
+  rewrite proxy sends the browser's host as `x-forwarded-host`, so k12-api must run with
+  `TRUST_PROXY_HOPS=1` behind it (verified in the Next.js proxy source).
 - Every web origin, including School subdomains and custom domains, must be listed in k12-api
   `CORS_ORIGINS`.
 
@@ -87,4 +88,8 @@ or `lib/` only when more than one module needs it.
 
 - `GET /auth/me/memberships` returns only `schoolId`; the school switcher needs at least the
   School name (and ideally code and logo) in that response.
-- Add the k12-web origins (`http://localhost:3001`, subdomain origins) to k12-api `CORS_ORIGINS`.
+- k12-api `.env.example`/README should document the k12-web dev setup: `http://localhost:3001` in
+  `CORS_ORIGINS` and `TRUST_PROXY_HOPS=1` (already set in the local `.env`).
+- The API rejects `*.localhost` hostnames as not fully qualified, so School-hostname login can't be
+  tested locally with `dps.localhost`. Needs a decision: a dev hostname such as
+  `dps.kidzdiary.test` via `/etc/hosts`, or relaxing the check in development.
