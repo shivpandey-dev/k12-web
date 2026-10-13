@@ -34,3 +34,24 @@ export function apiErrorBody(statusCode: number, message: string | string[]): Ap
     timestamp: '2026-10-13T00:00:00.000Z',
   };
 }
+
+type MyMembership = Schema<'MyMembershipResponseDto'>;
+type Paginated<T> = { data: T[]; meta: Schema<'PaginationMetaDto'> };
+
+export function myMembership(overrides: Partial<MyMembership> = {}): MyMembership {
+  return {
+    id: 'membership-1',
+    userId: '7f9c2b1e-1d4a-4c8e-9b2f-3a6d5e4c1b0a',
+    schoolId: 'school-1',
+    role: 'TEACHER',
+    status: 'ACTIVE',
+    createdAt: '2026-10-01T00:00:00.000Z',
+    updatedAt: '2026-10-01T00:00:00.000Z',
+    school: { id: 'school-1', code: 'DPSS', name: 'Delhi Public School South', logoUrl: null },
+    ...overrides,
+  };
+}
+
+export function page<T>(data: T[], pageNumber = 1, totalPages = 1): Paginated<T> {
+  return { data, meta: { page: pageNumber, limit: 100, total: data.length, totalPages } };
+}

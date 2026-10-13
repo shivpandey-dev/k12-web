@@ -590,7 +590,6 @@ export interface components {
             /** @example 2026-08-08T00:00:00.000Z */
             timestamp: string;
         };
-        Object: Record<string, never>;
         PaginationMetaDto: {
             /** @example 1 */
             page: number;
@@ -1395,8 +1394,8 @@ export interface operations {
     SchoolsController_findAll_v1: {
         parameters: {
             query?: {
-                page?: components["schemas"]["Object"];
-                limit?: components["schemas"]["Object"];
+                page?: number;
+                limit?: number;
                 /** @description Case-insensitive name, code, or slug search. */
                 search?: string;
                 status?: "ACTIVE" | "INACTIVE" | "SUSPENDED";
@@ -1575,8 +1574,8 @@ export interface operations {
     BranchesController_findAll_v1: {
         parameters: {
             query?: {
-                page?: components["schemas"]["Object"];
-                limit?: components["schemas"]["Object"];
+                page?: number;
+                limit?: number;
                 /** @description Case-insensitive name, code, or city search. */
                 search?: string;
                 status?: "ACTIVE" | "INACTIVE";
@@ -1954,8 +1953,8 @@ export interface operations {
     PublicController_listSchools_v1: {
         parameters: {
             query?: {
-                page?: components["schemas"]["Object"];
-                limit?: components["schemas"]["Object"];
+                page?: number;
+                limit?: number;
                 /** @description Case-insensitive public name or slug search. */
                 search?: string;
             };
@@ -2311,8 +2310,8 @@ export interface operations {
     MembershipController_findAll_v1: {
         parameters: {
             query?: {
-                page?: components["schemas"]["Object"];
-                limit?: components["schemas"]["Object"];
+                page?: number;
+                limit?: number;
                 userId?: string;
                 role?: "OWNER" | "ADMIN" | "TEACHER" | "PARENT" | "STUDENT" | "STAFF";
                 status?: "ACTIVE" | "INACTIVE";
@@ -2555,8 +2554,8 @@ export interface operations {
     MyMembershipController_findMine_v1: {
         parameters: {
             query?: {
-                page?: components["schemas"]["Object"];
-                limit?: components["schemas"]["Object"];
+                page?: number;
+                limit?: number;
                 schoolId?: string;
                 role?: "OWNER" | "ADMIN" | "TEACHER" | "PARENT" | "STUDENT" | "STAFF";
                 status?: "ACTIVE" | "INACTIVE";
