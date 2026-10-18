@@ -41,8 +41,11 @@ decision. When a choice is not covered there, ask the user instead of picking si
   `localStorage`, URLs, logs, or `NEXT_PUBLIC_*` variables. Only non-sensitive preferences (e.g.
   the active membership ID, UI settings) may be persisted. Never use `dangerouslySetInnerHTML`
   with untrusted content.
-- UI is built with MUI. Visual design rules will come from the KidzDiary design system (not yet
-  defined); until then do not invent a palette, typography scale, or component styling.
+- UI is built with MUI and styled only through the KidzDiary theme in `src/theme/` (raw tokens in
+  `tokens/`, colour roles in `semantic.ts`, component overrides in `components/`). Use palette
+  roles (`primary.main`, `text.secondary`, `border.default`), typography variants, and spacing
+  steps; never hard-code hex colours, px font sizes, or ad-hoc shadows in components. Missing a
+  token or variant? Ask before adding one. Reference: `/design-system` (dev builds only).
 - Forms use React Hook Form + Zod mirroring the backend DTO rules; the backend stays authoritative.
 - Route guards and role-based UI are UX only. k12-api enforces authorization; never rely on hiding.
 - Filenames are kebab-case (`login-form.tsx`, `use-login.ts`); components and types PascalCase;

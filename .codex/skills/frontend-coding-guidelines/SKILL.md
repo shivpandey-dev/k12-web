@@ -61,8 +61,13 @@ architecture doc wins. Next.js 16 differs from older versions: check
 
 ## Styling
 
-- Use MUI components. Visual design rules (palette, typography, spacing, shape) will be defined
-  by the KidzDiary design system; until then do not invent styling conventions.
+- Use MUI components styled through the theme in `src/theme/`. The `ui-component` skill has the
+  token rules (palette roles, typography variants, the 4px spacing and radius units, elevation,
+  density).
+- No hard-coded hex colours, px font sizes, or custom shadows in components. Raw scales in
+  `src/theme/tokens/` are read only by the theme (and by the `/design-system` reference page).
+- Prefer `sx` with theme keys (`color: 'text.secondary'`, `p: 4`) over `styled()`. Put
+  look-and-feel shared by every usage in `src/theme/components/`.
 
 ## Security
 
