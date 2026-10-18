@@ -13,7 +13,8 @@ vi.mock('next/navigation', () => ({ notFound }));
 afterEach(() => vi.unstubAllEnvs());
 
 describe('design system page', () => {
-  it('renders the token reference in development', () => {
+  // The page renders every component sample, which is slow in jsdom.
+  it('renders the token reference in development', { timeout: 20_000 }, () => {
     vi.stubEnv('NODE_ENV', 'development');
     renderWithTheme(<DesignSystemPage />);
 
@@ -37,6 +38,7 @@ describe('design system page', () => {
       'Modal, drawer and toasts',
       'Data table',
       'Charts',
+      'App shell',
     ]) {
       expect(screen.getByRole('region', { name: section })).toBeInTheDocument();
     }

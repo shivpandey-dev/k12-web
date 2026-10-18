@@ -2,6 +2,7 @@ import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { AlertSamples } from './alert-samples';
+import { AppShellSamples } from './app-shell-samples';
 import { ButtonSamples } from './button-samples';
 import { CardSamples } from './card-samples';
 import { ChartSamples } from './chart-samples';
@@ -45,6 +46,7 @@ export function DesignSystemPreview() {
         <OverlaySamples />
         <TableSamples />
         <ChartSamples />
+        <AppShellSamples />
       </Stack>
     </Container>
   );

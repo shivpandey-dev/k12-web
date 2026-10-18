@@ -9,6 +9,17 @@ interface BorderPalette {
   focus: string;
 }
 
+/** Colours for the dark app sidebar. */
+interface SidebarPalette {
+  background: string;
+  text: string;
+  textActive: string;
+  groupLabel: string;
+  itemHover: string;
+  itemActive: string;
+  divider: string;
+}
+
 interface ThemeSizes {
   controlHeight: typeof controlHeight;
   rowHeight: typeof rowHeight;
@@ -33,9 +44,11 @@ declare module '@mui/material/styles' {
 
   interface Palette {
     border: BorderPalette;
+    sidebar: SidebarPalette;
   }
   interface PaletteOptions {
     border?: BorderPalette;
+    sidebar?: SidebarPalette;
   }
 
   interface TypographyVariants {

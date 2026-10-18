@@ -5,6 +5,7 @@ import { chartOverrides } from './charts';
 import { chipOverrides } from './chip';
 import { feedbackOverrides } from './feedback';
 import { inputOverrides } from './input';
+import { navigationOverrides } from './navigation';
 import { overlayOverrides } from './overlay';
 import { selectionOverrides } from './selection';
 import { sliderOverrides } from './slider';
@@ -43,4 +44,5 @@ export const components: Components<Theme> = {
   ...overlayOverrides,
   ...tableOverrides,
   ...chartOverrides,
+  ...navigationOverrides,
 };
