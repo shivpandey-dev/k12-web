@@ -52,6 +52,26 @@ to see every token.
   children's props, so render them inside a client component.
 - **Chips:** filled with a colour role for status and tags (`success` = paid/present, `error` =
   overdue, `warning` = due soon, `secondary` = role tags). Use `variant="outlined"` for filters.
+- **Icons:** use `lucide-react` only. Import named icons (`import { Plus } from 'lucide-react'`).
+  The theme sizes icons inside buttons (18px), icon buttons (20px), inputs (18px) and chips (14px).
+  Elsewhere pass `size` (16/18/20). Icon-only buttons need `aria-label`; decorative icons get
+  `aria-hidden`.
+- **Cards:** `Card` with `CardHeader` (title, optional `subheader` and `action`), `CardContent`
+  and `CardActions` (right-aligned, primary last). Don't add elevation; the theme sets border
+  and shadow.
+- **Tabs:** `Tabs`/`Tab` for page sections. Use `ToggleButtonGroup exclusive` as a segmented
+  control for switching a view (day/week/month).
+- **Messages:** an inline `Alert` (soft tint) for context that stays on the page. Use `toast.*`
+  from `@/components/ui` for short confirmations after an action, not for errors the user must
+  fix in a form. A toast `action` (e.g. Undo) must be safe to ignore.
+- **Dialogs:** `maxWidth="xs"` (400) for confirms, the default `sm` (560) for forms, `md`
+  (800) for wide content. Use `DialogHeader` from `@/components/ui` for the title and close button,
+  and link it with `aria-labelledby`. The destructive confirm button is
+  `variant="contained" color="error"`, labelled with the action ("Delete record", not "OK").
+- **Drawers:** temporary right-side `Drawer` (440px) for quick view or edit without leaving a
+  list. Reuse `DialogHeader` and `DialogActions` inside it.
+- **Empty states:** `EmptyState` from `@/components/ui` with an icon, an inviting title, one
+  line of description and usually one primary action.
 - Shared look-and-feel for a component goes in a `src/theme/components/<component>.ts` override,
   not repeated `sx` on each usage. Add a new token or variant only after asking the user.
 - **Light mode only for now:** reading roles through the theme keeps components dark-mode ready.

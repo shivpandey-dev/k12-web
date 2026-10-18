@@ -1,9 +1,13 @@
 import type { Components, Theme } from '@mui/material/styles';
 import { buttonOverrides } from './button';
+import { cardOverrides } from './card';
 import { chipOverrides } from './chip';
+import { feedbackOverrides } from './feedback';
 import { inputOverrides } from './input';
+import { overlayOverrides } from './overlay';
 import { selectionOverrides } from './selection';
 import { sliderOverrides } from './slider';
+import { tabsOverrides } from './tabs';
 
 const baseOverrides: Components<Theme> = {
   MuiCssBaseline: {
@@ -31,4 +35,8 @@ export const components: Components<Theme> = {
   ...selectionOverrides,
   ...sliderOverrides,
   ...chipOverrides,
+  ...cardOverrides,
+  ...tabsOverrides,
+  ...feedbackOverrides,
+  ...overlayOverrides,
 };
