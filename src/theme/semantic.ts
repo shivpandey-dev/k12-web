@@ -63,4 +63,13 @@ export const lightPalette = {
   divider: neutral[200],
   border: { subtle: neutral[100], default: neutral[200], strong: neutral[300], focus: brand[600] },
   action: { active: neutral[600], disabled: neutral[400], disabledBackground: neutral[100] },
+  sidebar: {
+    background: brand[900],
+    text: brand[200],
+    textActive: WHITE,
+    groupLabel: brand[400],
+    itemHover: brand[800],
+    itemActive: brand[700],
+    divider: brand[800],
+  },
 } satisfies PaletteOptions;

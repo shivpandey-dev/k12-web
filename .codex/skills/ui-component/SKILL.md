@@ -85,6 +85,16 @@ to see every token.
   Use one y-axis per chart (never dual axes). Format values with `valueFormatter`. Status
   colours (success/warning/error) are for status data only, never for "series 4". Prefer a stat
   card over a chart for a single number.
+- **App shell:** signed-in pages render inside `AppShell` from `@/components/app-shell`. It has
+  the dark sidebar (`sidebar.*` palette roles), which collapses to a 56px rail on desktop
+  (remembered per device) and becomes a drawer below `md`. The top bar holds
+  `MembershipSwitcher`, `SearchTrigger` (⌘K / Ctrl+K), `NotificationsButton`, help, and
+  `ProfileMenu`. Navigation is data: `NavGroup[]` with Lucide icons and optional `roles`, filtered
+  with `filterNavigation(groups, activeRole)`. Hiding nav items is UX only. Pass `activeHref` from
+  `usePathname()`.
+- **Page header:** every page starts with `PageHeader`: breadcrumbs (parents link, the current
+  page has no `href`), the page's single `h1`, an optional one-line description, and actions with
+  the primary action last.
 - Shared look-and-feel for a component goes in a `src/theme/components/<component>.ts` override,
   not repeated `sx` on each usage. Add a new token or variant only after asking the user.
 - **Light mode only for now:** reading roles through the theme keeps components dark-mode ready.
