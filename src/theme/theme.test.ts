@@ -34,6 +34,17 @@ describe('app theme', () => {
     expect(contrast(theme.palette.text.secondary, WHITE)).toBeGreaterThanOrEqual(4.5);
   });
 
+  it('gives every status role a soft tint whose text passes WCAG AA', () => {
+    const roles = ['primary', 'secondary', 'error', 'warning', 'success', 'info'] as const;
+    for (const role of roles) {
+      const { soft, onSoft } = theme.palette[role];
+      expect(contrast(soft, onSoft), role).toBeGreaterThanOrEqual(4.5);
+    }
+    expect(theme.vars.palette.success.soft).toBe(
+      `var(--kd-palette-success-soft, ${theme.palette.success.soft})`,
+    );
+  });
+
   it('uses a 4px spacing and radius unit', () => {
     // With CSS variables on, spacing resolves through --kd-spacing (4px).
     expect(theme.spacing(1)).toBe('var(--kd-spacing, 4px)');
@@ -42,7 +53,7 @@ describe('app theme', () => {
   });
 
   it('exposes colours as kd-prefixed CSS variables', () => {
-    expect(theme.vars?.palette.primary.main).toBe(`var(--kd-palette-primary-main, ${brand[600]})`);
+    expect(theme.vars.palette.primary.main).toBe(`var(--kd-palette-primary-main, ${brand[600]})`);
   });
 
   it('maps the type scale onto MUI variants and disables off-scale ones', () => {

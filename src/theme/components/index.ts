@@ -1,10 +1,11 @@
 import type { Components, Theme } from '@mui/material/styles';
+import { buttonOverrides } from './button';
+import { chipOverrides } from './chip';
+import { inputOverrides } from './input';
+import { selectionOverrides } from './selection';
+import { sliderOverrides } from './slider';
 
-/**
- * Per-component overrides. Each component gets its own file in this folder as it is designed
- * (button.ts, text-field.ts, ...) and is spread in here.
- */
-export const components: Components<Theme> = {
+const baseOverrides: Components<Theme> = {
   MuiCssBaseline: {
     styleOverrides: {
       body: {
@@ -20,4 +21,14 @@ export const components: Components<Theme> = {
       variantMapping: { display: 'p', title: 'p', label: 'span' },
     },
   },
+};
+
+/** Per-component overrides, one file per component family. */
+export const components: Components<Theme> = {
+  ...baseOverrides,
+  ...buttonOverrides,
+  ...inputOverrides,
+  ...selectionOverrides,
+  ...sliderOverrides,
+  ...chipOverrides,
 };

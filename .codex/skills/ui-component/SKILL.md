@@ -42,6 +42,16 @@ to see every token.
 - **Density:** controls default to 36px (`theme.sizes.controlHeight`). Use compact 36px table rows
   on admin screens and comfortable 48px rows on parent and student screens
   (`theme.sizes.rowHeight`).
+- **Buttons:** `variant="contained"` = primary, at most one per screen. The default
+  `outlined` = secondary (neutral). `text` = tertiary. Use `color="error"` for destructive actions.
+  Ripples are off; focus rings show keyboard focus.
+- **Fields:** `TextField` / `Select` labels always sit above the field (shrink is forced; never
+  pass a floating label). Required fields use `required`; errors use `error` plus `helperText`.
+- **Checkbox, radio, switch:** wrap them in `FormControlLabel`. The custom 16px marks come from
+  the theme, so don't pass `icon`/`checkedIcon`. `FormControlLabel` and `Select` read their
+  children's props, so render them inside a client component.
+- **Chips:** filled with a colour role for status and tags (`success` = paid/present, `error` =
+  overdue, `warning` = due soon, `secondary` = role tags). Use `variant="outlined"` for filters.
 - Shared look-and-feel for a component goes in a `src/theme/components/<component>.ts` override,
   not repeated `sx` on each usage. Add a new token or variant only after asking the user.
 - **Light mode only for now:** reading roles through the theme keeps components dark-mode ready.

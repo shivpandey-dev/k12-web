@@ -20,7 +20,18 @@ describe('design system page', () => {
     expect(
       screen.getByRole('heading', { level: 1, name: 'KidzDiary design system' }),
     ).toBeVisible();
-    for (const section of ['Colour', 'Typography', 'Spacing', 'Radius', 'Shadows', 'Sizes']) {
+    for (const section of [
+      'Colour',
+      'Typography',
+      'Spacing',
+      'Radius',
+      'Shadows',
+      'Sizes',
+      'Buttons',
+      'Text fields and select',
+      'Checkbox, radio, switch and slider',
+      'Chips',
+    ]) {
       expect(screen.getByRole('region', { name: section })).toBeInTheDocument();
     }
     expect(screen.getByTitle('#614084')).toBeInTheDocument();

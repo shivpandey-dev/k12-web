@@ -15,6 +15,20 @@ interface ThemeSizes {
 type ThemeShadowTokens = typeof shadows & { focusRing: typeof focusRing };
 
 declare module '@mui/material/styles' {
+  // The theme is always built with cssVariables, so `theme.vars` is always present.
+  interface CssThemeVariables {
+    enabled: true;
+  }
+
+  interface PaletteColor {
+    soft: string;
+    onSoft: string;
+  }
+  interface SimplePaletteColorOptions {
+    soft?: string;
+    onSoft?: string;
+  }
+
   interface Palette {
     border: BorderPalette;
   }
