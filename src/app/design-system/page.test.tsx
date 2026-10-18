@@ -35,6 +35,8 @@ describe('design system page', () => {
       'Tabs',
       'Alert banners',
       'Modal, drawer and toasts',
+      'Data table',
+      'Charts',
     ]) {
       expect(screen.getByRole('region', { name: section })).toBeInTheDocument();
     }

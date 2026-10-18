@@ -72,6 +72,19 @@ to see every token.
   list. Reuse `DialogHeader` and `DialogActions` inside it.
 - **Empty states:** `EmptyState` from `@/components/ui` with an icon, an inviting title, one
   line of description and usually one primary action.
+- **Tables:** use `DataTable` from `@/components/ui` for lists of records. It uses TanStack Table
+  v9 for state (`useTable`, not v8's `useReactTable`) and MUI `Table` for markup. Define columns
+  at module scope with `createDataTableColumns<Row>()`. Set `meta: { align: 'right' }` for
+  numbers and amounts, and `meta.width` for fixed columns. For server data, pass `rowCount` plus
+  controlled `sorting`/`pagination` and their `on*Change`, and keep them in the URL. Pass
+  `isLoading`, `error` and `emptyState` so the four states are explicit. Use `enableRowSelection`
+  plus `bulkActions` for batch work. Use plain MUI `Table` only for small static tables.
+- **Charts:** MUI X Charts (`@mui/x-charts`). The theme supplies the validated series order
+  (`chartSeries`, fixed and never cycled, at most 8; fold the rest into "Other"), 4px bar ends,
+  and quiet axes and grid. Wrap every chart in `ChartCard` with a `table` view of the same data.
+  Use one y-axis per chart (never dual axes). Format values with `valueFormatter`. Status
+  colours (success/warning/error) are for status data only, never for "series 4". Prefer a stat
+  card over a chart for a single number.
 - Shared look-and-feel for a component goes in a `src/theme/components/<component>.ts` override,
   not repeated `sx` on each usage. Add a new token or variant only after asking the user.
 - **Light mode only for now:** reading roles through the theme keeps components dark-mode ready.

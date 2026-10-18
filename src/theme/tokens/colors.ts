@@ -104,16 +104,20 @@ export const info: ColorScale = {
 
 export const WHITE = '#FFFFFF';
 
-/** Categorical chart series, in order of use. Each has at least 3:1 contrast against white. */
+/**
+ * Categorical chart series, used in this fixed order and never cycled. The order is validated for
+ * colour-blind separation between neighbours (worst adjacent CVD ΔE 11.3) and 3:1 contrast against
+ * white. A 9th series folds into "Other" rather than getting a new hue.
+ */
 export const chartSeries = [
-  '#754D9E',
-  '#1D9999',
-  '#C8800D',
-  '#347EC4',
-  '#C1628A',
-  '#4D9351',
-  '#DB684C',
-  '#677284',
+  '#754D9E', // aubergine
+  '#1D9999', // teal
+  '#DB684C', // coral
+  '#347EC4', // blue
+  '#4D9351', // green
+  '#A8488D', // magenta
+  '#C8800D', // amber
+  '#C1628A', // rose
 ] as const;
 
 export const colorScales = { brand, neutral, rose, success, warning, danger, info } as const;

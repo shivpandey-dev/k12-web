@@ -1,12 +1,14 @@
 import type { Components, Theme } from '@mui/material/styles';
 import { buttonOverrides } from './button';
 import { cardOverrides } from './card';
+import { chartOverrides } from './charts';
 import { chipOverrides } from './chip';
 import { feedbackOverrides } from './feedback';
 import { inputOverrides } from './input';
 import { overlayOverrides } from './overlay';
 import { selectionOverrides } from './selection';
 import { sliderOverrides } from './slider';
+import { tableOverrides } from './table';
 import { tabsOverrides } from './tabs';
 
 const baseOverrides: Components<Theme> = {
@@ -39,4 +41,6 @@ export const components: Components<Theme> = {
   ...tabsOverrides,
   ...feedbackOverrides,
   ...overlayOverrides,
+  ...tableOverrides,
+  ...chartOverrides,
 };
