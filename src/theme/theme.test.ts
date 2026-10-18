@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { theme } from './theme';
-import { brand, danger, neutral, radius, shadows, typeScale, WHITE } from './tokens';
+import { brand, chartSeries, danger, neutral, radius, shadows, typeScale, WHITE } from './tokens';
 
 function luminance(hex: string) {
   const [r = 0, g = 0, b = 0] = [1, 3, 5]
@@ -43,6 +43,14 @@ describe('app theme', () => {
     expect(theme.vars.palette.success.soft).toBe(
       `var(--kd-palette-success-soft, ${theme.palette.success.soft})`,
     );
+  });
+
+  it('keeps eight chart series that each stand out from the page', () => {
+    expect(chartSeries).toHaveLength(8);
+    expect(new Set(chartSeries).size).toBe(8);
+    for (const colour of chartSeries) {
+      expect(contrast(colour, WHITE), colour).toBeGreaterThanOrEqual(3);
+    }
   });
 
   it('uses a 4px spacing and radius unit', () => {

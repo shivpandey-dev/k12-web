@@ -1,3 +1,5 @@
+// Adds the Mui*Chart* component keys to the theme's `components`.
+import type {} from '@mui/x-charts/themeAugmentation';
 import type { controlHeight, focusRing, radius, rowHeight, shadows } from './tokens';
 
 interface BorderPalette {
