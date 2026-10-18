@@ -1,10 +1,14 @@
 import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
+import { AlertSamples } from './alert-samples';
 import { ButtonSamples } from './button-samples';
+import { CardSamples } from './card-samples';
 import { ChipSamples } from './chip-samples';
 import { ColorTokens } from './color-tokens';
 import { FieldSamples } from './field-samples';
+import { NavigationSamples } from './navigation-samples';
+import { OverlaySamples } from './overlay-samples';
 import { RadiusTokens } from './radius-tokens';
 import { SelectionSamples } from './selection-samples';
 import { ShadowTokens } from './shadow-tokens';
@@ -33,6 +37,10 @@ export function DesignSystemPreview() {
         <FieldSamples />
         <SelectionSamples />
         <ChipSamples />
+        <CardSamples />
+        <NavigationSamples />
+        <AlertSamples />
+        <OverlaySamples />
       </Stack>
     </Container>
   );

@@ -1,4 +1,5 @@
 import type { Components, Theme } from '@mui/material/styles';
+import { X } from 'lucide-react';
 
 const ROLES = ['primary', 'secondary', 'error', 'warning', 'success', 'info'] as const;
 
@@ -8,6 +9,7 @@ const ROLES = ['primary', 'secondary', 'error', 'warning', 'success', 'info'] as
  */
 export const chipOverrides: Components<Theme> = {
   MuiChip: {
+    defaultProps: { deleteIcon: <X /> },
     styleOverrides: {
       root: ({ theme }) => ({
         ...theme.typography.label,
@@ -52,9 +54,10 @@ export const chipOverrides: Components<Theme> = {
       }),
       sizeSmall: { height: 20, '& .MuiChip-label': { padding: '0 6px' } },
       label: { padding: '0 8px' },
-      icon: { fontSize: 14, marginLeft: 6, marginRight: -2, color: 'inherit' },
+      icon: { width: 14, height: 14, marginLeft: 6, marginRight: -2, color: 'inherit' },
       deleteIcon: {
-        fontSize: 14,
+        width: 14,
+        height: 14,
         marginLeft: -2,
         marginRight: 6,
         color: 'inherit',

@@ -1,4 +1,5 @@
 import type { Components, Theme } from '@mui/material/styles';
+import { ChevronDown } from 'lucide-react';
 
 /**
  * Text fields and selects: outlined only, label above the field (never floating), 36px tall.
@@ -74,7 +75,7 @@ export const inputOverrides: Components<Theme> = {
     styleOverrides: {
       root: ({ theme }) => ({
         color: theme.vars.palette.grey[500],
-        '& .MuiSvgIcon-root': { fontSize: 18 },
+        '& svg': { width: 18, height: 18 },
       }),
     },
   },
@@ -89,10 +90,17 @@ export const inputOverrides: Components<Theme> = {
     },
   },
   MuiSelect: {
+    defaultProps: { IconComponent: ChevronDown },
     styleOverrides: {
       // MUI's 1.4375em line-height and min-height make the select 0.1px taller than text fields.
       select: { minHeight: 20, lineHeight: '20px' },
-      icon: ({ theme }) => ({ right: 8, color: theme.vars.palette.grey[500] }),
+      icon: ({ theme }) => ({
+        right: 10,
+        top: 'calc(50% - 9px)',
+        width: 18,
+        height: 18,
+        color: theme.vars.palette.grey[500],
+      }),
     },
   },
   MuiMenu: {

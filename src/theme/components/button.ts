@@ -22,7 +22,8 @@ export const buttonOverrides: Components<Theme> = {
         '&.Mui-focusVisible': { boxShadow: theme.tokenShadows.focusRing },
         '& .MuiButton-startIcon': { marginLeft: -2, marginRight: 6 },
         '& .MuiButton-endIcon': { marginLeft: 6, marginRight: -2 },
-        '& .MuiButton-icon > *:nth-of-type(1)': { fontSize: 18 },
+        // Lucide icons are plain SVGs; size them like MUI's SvgIcon.
+        '& .MuiButton-icon > svg': { width: 18, height: 18 },
         variants: [
           {
             props: { variant: 'outlined', color: 'primary' },
@@ -67,11 +68,15 @@ export const buttonOverrides: Components<Theme> = {
         padding: 8,
         borderRadius: theme.radius.md,
         color: theme.vars.palette.grey[700],
-        '& .MuiSvgIcon-root': { fontSize: 20 },
+        '& > svg': { width: 20, height: 20 },
         '&:hover': { backgroundColor: theme.vars.palette.grey[100] },
         '&.Mui-focusVisible': { boxShadow: theme.tokenShadows.focusRing },
       }),
-      sizeSmall: ({ theme }) => ({ padding: 4, borderRadius: theme.radius.sm }),
+      sizeSmall: ({ theme }) => ({
+        padding: 4,
+        borderRadius: theme.radius.sm,
+        '& > svg': { width: 18, height: 18 },
+      }),
     },
   },
 };

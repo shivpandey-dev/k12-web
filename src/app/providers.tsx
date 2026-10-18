@@ -2,6 +2,7 @@
 
 import { QueryClientProvider } from '@tanstack/react-query';
 import { useState, type ReactNode } from 'react';
+import { Toaster } from '@/components/ui';
 import { createQueryClient } from '@/lib/query-client';
 import { SessionBootstrap } from '@/modules/auth';
 import { ActiveMembershipHydrator } from '@/modules/membership';
@@ -14,6 +15,7 @@ export function Providers({ children }: { children: ReactNode }) {
       <SessionBootstrap />
       <ActiveMembershipHydrator />
       {children}
+      <Toaster />
     </QueryClientProvider>
   );
 }

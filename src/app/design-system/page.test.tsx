@@ -31,6 +31,10 @@ describe('design system page', () => {
       'Text fields and select',
       'Checkbox, radio, switch and slider',
       'Chips',
+      'Cards and empty state',
+      'Tabs',
+      'Alert banners',
+      'Modal, drawer and toasts',
     ]) {
       expect(screen.getByRole('region', { name: section })).toBeInTheDocument();
     }
