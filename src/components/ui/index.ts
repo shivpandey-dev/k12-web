@@ -11,5 +11,7 @@ export {
 export { ChartCard } from './chart-card';
 export { DialogHeader } from './dialog-header';
 export { EmptyState } from './empty-state';
+export { PageLoader } from './page-loader';
+export { PasswordField } from './password-field';
 export { toast, Toaster } from './toast';
 export type { ToastOptions, ToastSeverity } from './toast';

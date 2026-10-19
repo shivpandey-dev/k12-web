@@ -57,6 +57,30 @@ After login, the client loads `GET /auth/me/memberships`. With one membership it
 automatically; with several, the user picks one, and a header switcher changes it. The active
 membership lives in Zustand (persisted per device) and drives navigation and role-specific pages.
 
+## Signed-in routing
+
+Decided 2026-10-18. Route guards are UX only; k12-api enforces every permission.
+
+| Route                | Group    | Purpose                                                              |
+| -------------------- | -------- | -------------------------------------------------------------------- |
+| `/`                  | —        | Redirects to `/home` when signed in, otherwise `/login`.             |
+| `/login`             | `(auth)` | Central portal sign-in (school code + login ID); remembers the code. |
+| `/change-password`   | `(auth)` | Forced after a temporary password; also reached from the profile.    |
+| `/select-membership` | `(auth)` | Shown only when a user has several active memberships.               |
+| `/home`              | `(app)`  | Placeholder landing until per-role dashboards are decided.           |
+
+- `(auth)` pages use the split-screen `AuthLayout`. `(app)` pages run `RequireSession` (anonymous →
+  `/login?returnTo=…`, temporary password → `/change-password`), then `RequireActiveMembership`
+  (several memberships → `/select-membership`, none → explanation and sign out), then the
+  `SignedInShell`.
+- `returnTo` is accepted only as a same-origin relative path (`safeReturnTo`) and never points at
+  an auth page.
+- New passwords need 8–128 characters (k12-api `ChangePasswordDto`). Changing a password signs
+  out every other session for that login. "Sign out of all devices" ends every session,
+  including the current one.
+- Forgot password is deferred: k12-api has no reset endpoint yet (its ADR 0004 rules out a public
+  one), so the login page has no "Forgot password" link.
+
 ## Code structure
 
 ```text

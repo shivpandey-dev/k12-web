@@ -8,16 +8,19 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
-import { KeyRound, LogOut, UserRound } from 'lucide-react';
+import { KeyRound, LogOut, MonitorSmartphone, UserRound } from 'lucide-react';
 import { useId, useState } from 'react';
 
 interface ProfileMenuProps {
   name: string;
   /** Email or login ID shown under the name. */
   detail?: string;
-  onProfile: () => void;
+  /** Omit until a profile page exists. */
+  onProfile?: () => void;
   onChangePassword: () => void;
   onSignOut: () => void;
+  /** Ends every session for this login, including this one. */
+  onSignOutAll?: () => void;
 }
 
 const initialsOf = (name: string) =>
@@ -34,6 +37,7 @@ export function ProfileMenu({
   onProfile,
   onChangePassword,
   onSignOut,
+  onSignOutAll,
 }: ProfileMenuProps) {
   const [anchor, setAnchor] = useState<HTMLElement | null>(null);
   const menuId = useId();
@@ -73,12 +77,14 @@ export function ProfileMenu({
           ) : null}
         </Box>
         <Divider sx={{ my: 1 }} />
-        <MenuItem onClick={choose(onProfile)}>
-          <ListItemIcon>
-            <UserRound size={16} aria-hidden />
-          </ListItemIcon>
-          Your profile
-        </MenuItem>
+        {onProfile ? (
+          <MenuItem onClick={choose(onProfile)}>
+            <ListItemIcon>
+              <UserRound size={16} aria-hidden />
+            </ListItemIcon>
+            Your profile
+          </MenuItem>
+        ) : null}
         <MenuItem onClick={choose(onChangePassword)}>
           <ListItemIcon>
             <KeyRound size={16} aria-hidden />
@@ -92,6 +98,14 @@ export function ProfileMenu({
           </ListItemIcon>
           Sign out
         </MenuItem>
+        {onSignOutAll ? (
+          <MenuItem onClick={choose(onSignOutAll)}>
+            <ListItemIcon>
+              <MonitorSmartphone size={16} aria-hidden />
+            </ListItemIcon>
+            Sign out of all devices
+          </MenuItem>
+        ) : null}
       </Menu>
     </>
   );
